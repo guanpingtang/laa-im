@@ -44,7 +44,7 @@
         </dependencies>
         <configuration>
           <!-- 主程序入口-->
-          <mainClass>com.h3c.plat.main.Application</mainClass>
+          <mainClass>com.dipsy.laa.main.Application</mainClass>
           <fork>true</fork>
           <jvmArguments>
             -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
