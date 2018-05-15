@@ -40,7 +40,7 @@ public class SwaggerConf {
         return new Docket(DocumentationType.SWAGGER_2)
             .apiInfo(apiInfo())
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.h3c.plat"))
+            .apis(RequestHandlerSelectors.basePackage("com.dipsy.laa"))
             .paths(PathSelectors.any())
             .build()
             .globalOperationParameters(pars);
@@ -48,7 +48,7 @@ public class SwaggerConf {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("Plat RESTful APIs")
+            .title("Laa RESTful APIs")
             .description("")
             .termsOfServiceUrl("")
             .version("1.0.0")
