@@ -5,8 +5,8 @@ server:
 spring:
   datasource:
     url: "jdbc:mysql://106.14.169.164:3306/game"
-    username: "root"
-    password: "xy520tgp"
+    username: "${USERNAME:root}"
+    password: "${PASSWORD:12345678}"
     driver-class-name: "com.mysql.jdbc.Driver"
 
 # IM端口
