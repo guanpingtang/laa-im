@@ -7,10 +7,10 @@
     <artifactId>laa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>im</module>
         <module>main</module>
-        <module>security</module>
         <module>common</module>
+        <module>security</module>
+        <module>im</module>
     </modules>
     <packaging>pom</packaging>
 
