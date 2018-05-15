@@ -3,6 +3,9 @@ package com.dipsy.laa.im;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+/**
+ * 入站简单处理 example 无逻辑
+ */
 public class SimpleHandle extends ChannelInboundHandlerAdapter {
 
     @Override

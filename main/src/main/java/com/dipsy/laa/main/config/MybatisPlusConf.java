@@ -19,6 +19,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
+/**
+ * mybatis 配置
+ * @author tgp
+ */
 @Configuration
 public class MybatisPlusConf {
 

@@ -2,6 +2,10 @@ package com.dipsy.laa.common.exception;
 
 import com.dipsy.laa.common.constant.IError;
 
+/**
+ * 业务异常
+ * @author tgp
+ */
 public class BusinessException extends RuntimeException {
 
     private String code;

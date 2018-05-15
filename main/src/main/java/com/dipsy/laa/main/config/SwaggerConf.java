@@ -16,6 +16,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * swagger接口配置
+ * @author tgp 
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConf {
