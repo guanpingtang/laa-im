@@ -1,4 +1,4 @@
-package com.dipsy.laa.im.conf;
+package com.dipsy.laa.main.config;
 
 import com.dipsy.laa.im.ImServerStart;
 import org.springframework.beans.factory.annotation.Value;
