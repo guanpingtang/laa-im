@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class ControllerExceptionAdvice {
 
-
     @ResponseBody
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity handleBusinessException(HttpServletRequest request, BusinessException e) {
@@ -30,4 +29,5 @@ public class ControllerExceptionAdvice {
 //    public ResponseEntity handleException(HttpServletRequest request, BusinessException e) {
 //        return ResponseEntity.failure("500","内部异常");
 //    }
+
 }

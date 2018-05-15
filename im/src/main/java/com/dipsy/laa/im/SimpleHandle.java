@@ -24,4 +24,5 @@ public class SimpleHandle extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         super.exceptionCaught(ctx, cause);
     }
+
 }

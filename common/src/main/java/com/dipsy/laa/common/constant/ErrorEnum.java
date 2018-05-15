@@ -11,8 +11,6 @@ public enum ErrorEnum implements IError {
     private String errorCode;
     private String errorMessage;
 
-
-
     ErrorEnum(String errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
@@ -35,4 +33,5 @@ public enum ErrorEnum implements IError {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
 }

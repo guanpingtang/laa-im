@@ -18,11 +18,12 @@ import java.util.List;
 
 /**
  * swagger接口配置
- * @author tgp 
+ * @author tgp
  */
 @Configuration
 @EnableSwagger2
 public class SwaggerConf {
+
     @Bean
     public Docket createRestApi() {
         ParameterBuilder tokenPar = new ParameterBuilder();
@@ -53,4 +54,5 @@ public class SwaggerConf {
             .version("1.0.0")
             .build();
     }
+
 }

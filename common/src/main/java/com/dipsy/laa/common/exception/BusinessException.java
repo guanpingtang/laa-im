@@ -11,7 +11,6 @@ public class BusinessException extends RuntimeException {
     private String code;
     private String msg;
 
-
     public BusinessException(String code, String msg) {
         this.code = code;
         this.msg = msg;
@@ -22,7 +21,6 @@ public class BusinessException extends RuntimeException {
         this.code = iError.getErrorCode();
         this.msg = iError.getErrorMessage();
     }
-
 
     public String getCode() {
         return code;

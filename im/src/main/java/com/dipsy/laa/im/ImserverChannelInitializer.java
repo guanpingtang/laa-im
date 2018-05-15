@@ -9,6 +9,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @author tgp
  */
 public class ImserverChannelInitializer extends SimpleChannelInboundHandler {
+
     /**
      * <strong>Please keep in mind that this method will be renamed to
      * {@code messageReceived(ChannelHandlerContext, I)} in 5.0.</strong>
@@ -26,4 +27,5 @@ public class ImserverChannelInitializer extends SimpleChannelInboundHandler {
         //在这里添加处理链 handel链
         channelPipeline.addLast(new SimpleHandle());
     }
+
 }

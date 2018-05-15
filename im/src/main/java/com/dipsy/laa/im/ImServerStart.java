@@ -14,6 +14,7 @@ import io.netty.handler.logging.LoggingHandler;
  * @author tgp
  */
 public class ImServerStart {
+
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private final EventLoopGroup workGroup = new NioEventLoopGroup();
     private int port;
@@ -40,4 +41,5 @@ public class ImServerStart {
         ImServerStart server = new ImServerStart(9432);
         server.start();
     }
+
 }

@@ -19,4 +19,5 @@ public class ImServerConf {
     public ImServerStart imServerStart() {
         return new ImServerStart(port);
     }
+
 }
