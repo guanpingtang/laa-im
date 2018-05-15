@@ -9,3 +9,7 @@ spring:
     password: "xy520tgp"
     driver-class-name: "com.mysql.jdbc.Driver"
 
+# IM端口
+laa:
+  im:
+    port: "${IM_PORT:9432}"

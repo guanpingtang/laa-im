@@ -20,7 +20,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 
 @Configuration
-public class MybatisPlusConfiguration {
+public class MybatisPlusConf {
 
     // mapper 文件的路径，扫描所有 jar 包 下面的 mapper 路径
     private static final String MAPPER_FILE_PATH = "classpath*:/mapper/*.xml";

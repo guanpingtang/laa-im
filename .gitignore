@@ -16,7 +16,3 @@ target/
 *.log
 *.iws
 *.ipr
-
-plat-im/target
-plat-im/.mvn
-plat-im/plat-im.iml
