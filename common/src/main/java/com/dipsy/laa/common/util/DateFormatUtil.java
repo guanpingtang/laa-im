@@ -1,8 +1,5 @@
 package com.dipsy.laa.common.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,8 +13,6 @@ import java.util.Map;
  * @create 2018/5/14 22:29
  */
 public class DateFormatUtil {
-
-    private final static Logger logger = LoggerFactory.getLogger(DateFormatUtil.class);
 
     private static String datePattern = "yyyy-MM-dd HH:mm:ss";
     private static String datePatternV1 = "yyyy-MM-ddHH:mm:ss";

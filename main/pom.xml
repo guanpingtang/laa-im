@@ -2,15 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <artifactId>laa</artifactId>
         <groupId>com.dipsy</groupId>
+        <artifactId>laa</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
 
     <artifactId>main</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -18,18 +19,7 @@
             <artifactId>im</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.dipsy</groupId>
-            <artifactId>shiro</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dipsy</groupId>
-            <artifactId>common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -45,7 +35,7 @@
                 </dependencies>
                 <configuration>
                     <!-- 主程序入口-->
-                    <mainClass>com.dipsy.laa.Application</mainClass>
+                    <mainClass>com.dipsy.laa.main.Application</mainClass>
                     <fork>true</fork>
                     <jvmArguments>
                         -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
@@ -61,6 +51,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>laa</artifactId>
-    <groupId>com.dipsy</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <packaging>jar</packaging>
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>common</artifactId>
+    <parent>
+        <groupId>com.dipsy</groupId>
+        <artifactId>laa</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
+    <artifactId>common</artifactId>
+    <packaging>jar</packaging>
 
 </project>
