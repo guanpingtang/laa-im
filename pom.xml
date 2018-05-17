@@ -6,13 +6,14 @@
     <groupId>com.dipsy</groupId>
     <artifactId>laa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>main</module>
-        <module>common</module>
-        <module>security</module>
-        <module>im</module>
-    </modules>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>common</module>
+        <module>im</module>
+        <module>security</module>
+        <module>main</module>
+    </modules>
 
     <name>laa</name>
     <description>Demo project for Spring Boot</description>
@@ -39,10 +40,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <lombok.version>1.16.20</lombok.version>
         <netty.version>4.1.22.Final</netty.version>
-        <gson.version>2.3.1</gson.version>
         <freemarker.version>2.3.20</freemarker.version>
-        <slf4j.version>1.7.7</slf4j.version>
-        <log4j.version>1.2.14</log4j.version>
         <springframework.version>4.1.9.RELEASE</springframework.version>
     </properties>
 
@@ -115,7 +113,6 @@
         </dependency>
     </dependencies>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -139,6 +136,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

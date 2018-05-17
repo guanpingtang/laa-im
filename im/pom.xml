@@ -2,37 +2,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>laa</artifactId>
-    <groupId>com.dipsy</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
-  <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>im</artifactId>
+    <parent>
+        <groupId>com.dipsy</groupId>
+        <artifactId>laa</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
+    <artifactId>im</artifactId>
+    <packaging>jar</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.dipsy</groupId>
-      <artifactId>common</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.dipsy</groupId>
-      <artifactId>security</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-all</artifactId>
-      <version>${netty.version}</version>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.dipsy</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.dipsy</groupId>
+            <artifactId>security</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
 
-
-
-  </dependencies>
-
+    </dependencies>
 
 </project>
