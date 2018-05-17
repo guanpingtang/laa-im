@@ -4,7 +4,7 @@ server:
 ##  数据源配置
 spring:
   datasource:
-    url: "jdbc:mysql://106.14.169.164:3306/game"
+    url: "jdbc:mysql://106.14.169.164:3306/laa"
     username: "${USERNAME:root}"
     password: "${PASSWORD:12345678}"
     driver-class-name: "com.mysql.jdbc.Driver"

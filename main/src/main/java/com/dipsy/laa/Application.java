@@ -1,4 +1,4 @@
-package com.dipsy.laa.main;
+package com.dipsy.laa;
 
 import com.dipsy.laa.im.ImServerStart;
 import org.springframework.beans.factory.annotation.Autowired;

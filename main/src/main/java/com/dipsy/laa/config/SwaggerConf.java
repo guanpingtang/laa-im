@@ -1,4 +1,4 @@
-package com.dipsy.laa.main.config;
+package com.dipsy.laa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -9,8 +9,8 @@
     <modules>
         <module>im</module>
         <module>main</module>
-        <module>security</module>
         <module>common</module>
+        <module>shiro</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -29,7 +29,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <start-class>Application</start-class>
-        <swagger.version>2.8.0</swagger.version>
+        <swagger.version>2.7.0</swagger.version>
         <apach.commons.version>3.7</apach.commons.version>
         <mybatis.version>3.4.6</mybatis.version>
         <shiro.version>1.4.0</shiro.version>
@@ -131,11 +131,26 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--指定使用maven打包-->
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+                </configuration>
             </plugin>
         </plugins>
     </build>

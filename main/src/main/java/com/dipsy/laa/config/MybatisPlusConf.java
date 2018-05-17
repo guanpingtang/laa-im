@@ -1,4 +1,4 @@
-package com.dipsy.laa.main.config;
+package com.dipsy.laa.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.MybatisConfiguration;
@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
+import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ import javax.sql.DataSource;
  * @author tgp
  */
 @Configuration
+@MapperScan(basePackages = {"com.dipsy.laa.*.mapper*"})
 public class MybatisPlusConf {
 
     // mapper 文件的路径，扫描所有 jar 包 下面的 mapper 路径
