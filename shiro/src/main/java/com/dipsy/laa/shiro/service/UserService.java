@@ -6,10 +6,17 @@ import com.dipsy.laa.shiro.model.UserInfo;
 public interface UserService extends IService<UserInfo> {
 
     /**
-     * 根据用户账号查询用户
-     *
+     * 根据用户账号查询用户信息
      * @param userAccount userAccount
      * @return UserInfo
      */
     UserInfo findByUserAccount(String userAccount);
+
+    /**
+     * 根据userId查询用户信息
+     * @param userId
+     * @return
+     */
+    UserInfo findByUserId(String userId);
+
 }

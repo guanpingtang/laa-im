@@ -19,12 +19,16 @@ import java.util.Date;
 public class UserFriend extends Model<UserFriend> {
 
     private String id;
+
     @TableField("user_id")
     private String userId;
+
     @TableField("friend_id")
     private String friendId;
+
     @TableField("create_at")
     private Date createAt;
+
     @TableField("update_at")
     private Date updateAt;
 
@@ -33,6 +37,7 @@ public class UserFriend extends Model<UserFriend> {
      */
     @Override
     protected Serializable pkVal() {
-        return null;
+        return id;
     }
+
 }

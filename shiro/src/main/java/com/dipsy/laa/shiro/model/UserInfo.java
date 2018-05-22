@@ -19,7 +19,7 @@ import java.util.Date;
 public class UserInfo extends Model<UserInfo> {
 
     @TableField("user_id")
-    private int userId;
+    private String userId;
 
     @TableField("user_account")
     private String userAccount;
@@ -37,6 +37,6 @@ public class UserInfo extends Model<UserInfo> {
      */
     @Override
     protected Serializable pkVal() {
-        return null;
+        return userId;
     }
 }
