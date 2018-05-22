@@ -14,8 +14,8 @@ public interface UserService extends IService<UserInfo> {
 
     /**
      * 根据userId查询用户信息
-     * @param userId
-     * @return
+     * @param userId userId
+     * @return UserInfo
      */
     UserInfo findByUserId(String userId);
 
