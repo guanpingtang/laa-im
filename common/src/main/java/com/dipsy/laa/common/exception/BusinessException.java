@@ -1,12 +1,13 @@
 package com.dipsy.laa.common.exception;
 
 import com.dipsy.laa.common.constant.IError;
+import org.apache.shiro.authc.AuthenticationException;
 
 /**
  * 业务异常
  * @author tgp
  */
-public class BusinessException extends RuntimeException {
+public class BusinessException extends AuthenticationException {
 
     private String code;
     private String msg;

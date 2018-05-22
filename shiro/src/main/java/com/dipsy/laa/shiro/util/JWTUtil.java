@@ -11,6 +11,8 @@ import java.util.Date;
 
 public class JWTUtil {
 
+    private static final String SECRET = "we are team";
+
     // 过期时间5分钟
     private static final long EXPIRE_TIME = 5 * 60 * 1000;
 
@@ -18,16 +20,16 @@ public class JWTUtil {
      * 校验token是否正确
      *
      * @param token  密钥
-     * @param secret 用户的密码
+     * @param userAccount 用户的密码
      * @return 是否正确
      */
-    public static boolean verify(String token, String username, String secret) {
+    public static boolean verify(String token, String userAccount) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(secret);
+            Algorithm algorithm = Algorithm.HMAC256(SECRET);
             JWTVerifier verifier = JWT.require(algorithm)
-                .withClaim("username", username)
+                .withClaim("userAccount", userAccount)
                 .build();
-            DecodedJWT jwt = verifier.verify(token);
+            verifier.verify(token);
             return true;
         } catch (Exception exception) {
             return false;
@@ -42,24 +44,23 @@ public class JWTUtil {
     public static String getUserAccount(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);
-            return jwt.getClaim("username").asString();
+            return jwt.getClaim("userAccount").asString();
         } catch (JWTDecodeException e) {
             return null;
         }
     }
 
     /**
-     * 生成签名,5min后过期
+     * 生成token,5min后过期
      *
      * @param userAccount 用户账号
-     * @param secret   用户的密码
      * @return 加密的token
      */
-    public static String sign(String userAccount, String secret) {
+    public static String sign(String userAccount) {
         try {
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
-            Algorithm algorithm = Algorithm.HMAC256(secret);
-            // 附带username信息
+            Algorithm algorithm = Algorithm.HMAC256(SECRET);
+            // 附带userAccount信息
             return JWT.create()
                 .withClaim("userAccount", userAccount)
                 .withExpiresAt(date)

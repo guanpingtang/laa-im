@@ -33,7 +33,9 @@ public class ShiroRealm extends AuthorizingRealm {
     }
 
     /**
-     * 认证
+     * 认证,这里我解释一下。正常我们不用jwt token的时候 我们这里只需要数据库查询出用户名密码返回去，shiro框架层会自己做密码匹配，
+     * 但是我们用的是jwt token，所以这里我们只需要解析出用户的token是对的，即认为他是一个已经登录成功的用户。实际这里认证已经
+     * 成功，但是框架层还不知道登录成功，所以同样需要返回token让他去做匹配
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -41,19 +43,16 @@ public class ShiroRealm extends AuthorizingRealm {
 
         // 解密获得userAccount，用于和数据库进行对比
         String userAccount = JWTUtil.getUserAccount(userToken);
-        if (userAccount == null) {
-            throw new AuthenticationException("token invalid");
+
+        if (!JWTUtil.verify(userToken, userAccount)) {
+            throw new AuthenticationException("无效token");
         }
 
         UserInfo user = userService.findByUserAccount(userAccount);
         if (user == null) {
-            throw new UnknownAccountException();
+            throw new AuthenticationException("用户不存在");
         }
 
-        if (!JWTUtil.verify(userToken, userAccount, user.getPassword())) {
-            throw new UnknownAccountException();
-        }
-
-        return new SimpleAuthenticationInfo(userToken, userToken, "my_realm");
+        return new SimpleAuthenticationInfo(userToken, userToken, getName());
     }
 }

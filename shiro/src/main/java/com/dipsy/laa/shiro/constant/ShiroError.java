@@ -1,17 +1,18 @@
-package com.dipsy.laa.common.constant;
+package com.dipsy.laa.shiro.constant;
 
-/**
- * 公有模块错误枚举
- * @author tgp
- */
-public enum ErrorEnum implements IError {
+import com.dipsy.laa.common.constant.IError;
 
-    ;
+public enum ShiroError implements IError {
+
+    USERNAME_OR_PASSWORD_ERROR("username_or_password_error", "用户名或密码错误"),
+    USER_NOT_EXIST("user_not_exist","用户不存在"),
+    TOKEN_INCALID("token_invalid", "无效token"),
+    NOT_LOGIN("not_login", "未登录");
 
     private String errorCode;
     private String errorMessage;
 
-    ErrorEnum(String errorCode, String errorMessage) {
+    ShiroError(String errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }
@@ -33,5 +34,4 @@ public enum ErrorEnum implements IError {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
-
 }

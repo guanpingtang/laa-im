@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class ControllerExceptionAdvice {
 
+    /**
+     * 业务异常
+     * @param request request
+     * @param e e
+     * @return  ResponseEntity
+     */
     @ResponseBody
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity handleBusinessException(HttpServletRequest request, BusinessException e) {

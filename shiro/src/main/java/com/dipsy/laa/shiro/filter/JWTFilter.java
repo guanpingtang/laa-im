@@ -3,6 +3,7 @@ package com.dipsy.laa.shiro.filter;
 import com.dipsy.laa.shiro.model.JWTToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,9 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * jwt拦截器
@@ -46,16 +44,32 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
         return true;
     }
 
+    /**
+     * Processes unauthenticated requests. It handles the two-stage request/challenge authentication protocol.
+     *
+     * @param request  incoming ServletRequest
+     * @param response outgoing ServletResponse
+     * @return true if the request should be processed; false if the request should not continue to be processed
+     */
     @Override
-    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-        if (isLoginAttempt(request, response)) {
-            try {
-                executeLogin(request, response);
-            } catch (Exception e) {
-                responseErrorJson(request, response);
+    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+        if (isLoginRequest(request, response)) {
+            if (isLoginAttempt(request, response)) {
+                if (log.isTraceEnabled()) {
+                    log.trace("Login submission detected.  Attempting to execute login.");
+                }
+                return executeLogin(request, response);
+            } else {
+                if (log.isTraceEnabled()) {
+                    log.trace("Login page view.");
+                }
+                //allow them to see the login page ;)
+                return true;
             }
+        } else {
+            WebUtils.toHttp(response).sendError(401, "未登录");
+            return false;
         }
-        return false;
     }
 
     /**
@@ -75,18 +89,5 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
             return false;
         }
         return super.preHandle(request, response);
-    }
-
-    /**
-     * 将非法请求返回
-     */
-    private void responseErrorJson(ServletRequest request, ServletResponse response) {
-        Map<String,Object> result=new HashMap<>();
-        result.put("msg","UnAuthenticated");
-        try {
-            response.getWriter().print(result);
-        } catch (IOException e) {
-            log.error(e.getMessage());
-        }
     }
 }
