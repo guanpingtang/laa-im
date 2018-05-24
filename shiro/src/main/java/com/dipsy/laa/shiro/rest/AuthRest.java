@@ -2,8 +2,8 @@ package com.dipsy.laa.shiro.rest;
 
 import com.dipsy.laa.common.exception.BusinessException;
 import com.dipsy.laa.common.web.ResponseEntity;
+import com.dipsy.laa.dao.model.UserInfo;
 import com.dipsy.laa.shiro.constant.ShiroError;
-import com.dipsy.laa.shiro.model.UserInfo;
 import com.dipsy.laa.shiro.service.UserService;
 import com.dipsy.laa.shiro.util.JWTUtil;
 import io.swagger.annotations.Api;
@@ -50,4 +50,5 @@ public class AuthRest {
         }
         return ResponseEntity.success(JWTUtil.sign(userAccount));
     }
+
 }

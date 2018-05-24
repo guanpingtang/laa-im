@@ -29,7 +29,7 @@ import javax.sql.DataSource;
 public class MybatisPlusConf {
 
     // mapper 文件的路径，扫描所有 jar 包 下面的 mapper 路径
-    private static final String MAPPER_FILE_PATH = "classpath*:/mapper/*.xml";
+    private static final String MAPPER_FILE_PATH = "classpath*:/mapping/*.xml";
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")

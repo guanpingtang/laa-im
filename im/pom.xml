@@ -12,7 +12,6 @@
 
     <artifactId>im</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>com.dipsy</groupId>

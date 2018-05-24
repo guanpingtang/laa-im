@@ -13,6 +13,7 @@
         <module>main</module>
         <module>common</module>
         <module>shiro</module>
+        <module>dao</module>
     </modules>
 
     <name>laa</name>
@@ -42,6 +43,7 @@
         <netty.version>4.1.22.Final</netty.version>
         <freemarker.version>2.3.20</freemarker.version>
         <springframework.version>4.1.9.RELEASE</springframework.version>
+        <dozer.version>5.5.1</dozer.version>
     </properties>
 
     <dependencies>
@@ -105,6 +107,12 @@
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
+        </dependency>
+        <!-- pojo copy -->
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>${dozer.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

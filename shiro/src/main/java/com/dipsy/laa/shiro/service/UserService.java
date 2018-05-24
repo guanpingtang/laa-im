@@ -1,7 +1,7 @@
 package com.dipsy.laa.shiro.service;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.dipsy.laa.shiro.model.UserInfo;
+import com.dipsy.laa.dao.model.UserInfo;
 
 public interface UserService extends IService<UserInfo> {
 
