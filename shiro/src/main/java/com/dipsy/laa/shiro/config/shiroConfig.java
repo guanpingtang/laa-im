@@ -36,14 +36,15 @@ public class shiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/auth/login", "anon");
+        filterChainDefinitionMap.put("/api/auth/hash", "anon");
+        filterChainDefinitionMap.put("/api/auth/login", "anon");
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
         filterChainDefinitionMap.put("/v2/api-docs", "anon");
         filterChainDefinitionMap.put("/swagger-resources/**", "anon");
         filterChainDefinitionMap.put("/webjars/**", "anon");
 
         //开发环境可以配置不拦截
-        filterChainDefinitionMap.put("/**", "jwt");
+        filterChainDefinitionMap.put("/api/**", "jwt");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
