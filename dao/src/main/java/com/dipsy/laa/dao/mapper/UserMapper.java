@@ -1,7 +1,7 @@
-package com.dipsy.laa.shiro.mapper;
+package com.dipsy.laa.dao.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.dipsy.laa.shiro.model.UserInfo;
+import com.dipsy.laa.dao.model.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<UserInfo> {
+
 }

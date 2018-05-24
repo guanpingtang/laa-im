@@ -1,4 +1,4 @@
-package com.dipsy.laa.shiro.model;
+package com.dipsy.laa.dao.model;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
@@ -10,25 +10,25 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户model
+ * 联系人
  * @author tgp
  */
-@TableName("user_info")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserInfo extends Model<UserInfo> {
+@TableName("user_friends")
+public class UserFriend extends Model<UserFriend> {
+
+    private String id;
 
     @TableField("user_id")
     private String userId;
 
-    @TableField("user_account")
-    private String userAccount;
-    private String password;
-    private String cellphone;
-    private String email;
-    private String nickname;
+    @TableField("friend_id")
+    private String friendId;
+
     @TableField("create_at")
     private Date createAt;
+
     @TableField("update_at")
     private Date updateAt;
 
@@ -37,6 +37,7 @@ public class UserInfo extends Model<UserInfo> {
      */
     @Override
     protected Serializable pkVal() {
-        return userId;
+        return id;
     }
+
 }
