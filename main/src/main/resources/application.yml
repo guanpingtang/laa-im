@@ -8,19 +8,6 @@ spring:
     username: "${NAME:root}"
     password: "${PASSWORD:12345678}"
     driver-class-name: "com.mysql.jdbc.Driver"
-  mvc:
-    # spring CORS configuration
-    cors:
-      mappings:
-        # Intercept path
-        "/api/**":
-          #'*'允许所有的来源。未设置时，CORS支持被禁用。
-          allowed-origins: "*"
-          allowed-methods: "POST,GET,PUT,OPTIONS"
-          allowed-headers: "*"
-          max-age: "1800"
-          #设置是否支持凭证。未设置时，不支持凭证。
-          allow-credentials: "true"
 
 # IM端口
 laa:
