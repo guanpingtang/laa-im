@@ -3,7 +3,7 @@ package com.dipsy.laa.shiro.config;
 import com.dipsy.laa.dao.model.UserInfo;
 import com.dipsy.laa.shiro.model.JWTToken;
 import com.dipsy.laa.shiro.service.UserService;
-import com.dipsy.laa.shiro.util.JWTUtil;
+import com.dipsy.laa.common.util.JWTUtil;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;

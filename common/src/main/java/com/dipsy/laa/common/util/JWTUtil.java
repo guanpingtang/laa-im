@@ -1,4 +1,4 @@
-package com.dipsy.laa.shiro.util;
+package com.dipsy.laa.common.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -51,18 +51,34 @@ public class JWTUtil {
     }
 
     /**
+     * 获得token中的信息无需secret解密也能获得
+     *
+     * @return token中包含的用户账号
+     */
+    public static String getUserId(String token) {
+        try {
+            DecodedJWT jwt = JWT.decode(token);
+            return jwt.getClaim("userId").asString();
+        } catch (JWTDecodeException e) {
+            return null;
+        }
+    }
+
+    /**
      * 生成token,5min后过期
      *
      * @param userAccount 用户账号
+     * @param userId 用户id
      * @return 加密的token
      */
-    public static String sign(String userAccount) {
+    public static String sign(String userAccount, String userId) {
         try {
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
             // 附带userAccount信息
             return JWT.create()
                 .withClaim("userAccount", userAccount)
+                .withClaim("userId", userId)
                 .withExpiresAt(date)
                 .sign(algorithm);
         } catch (UnsupportedEncodingException e) {

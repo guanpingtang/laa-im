@@ -1,11 +1,12 @@
 package com.dipsy.laa.shiro.rest;
 
 import com.dipsy.laa.common.exception.BusinessException;
+import com.dipsy.laa.common.util.AuthUtils;
 import com.dipsy.laa.common.web.ResponseEntity;
 import com.dipsy.laa.dao.model.UserInfo;
 import com.dipsy.laa.shiro.constant.ShiroError;
 import com.dipsy.laa.shiro.service.UserService;
-import com.dipsy.laa.shiro.util.JWTUtil;
+import com.dipsy.laa.common.util.JWTUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -28,6 +29,8 @@ public class AuthRest {
     @ApiOperation(value = "密码加密example")
     public ResponseEntity hash(
         @RequestParam("password") String password) {
+        String userId = AuthUtils.getCurrUserId();
+        System.out.println(userId);
         String hashPassword = new SimpleHash("MD5", password, ByteSource.Util.bytes(password),
             2).toHex();
         return ResponseEntity.success(hashPassword);
@@ -48,7 +51,7 @@ public class AuthRest {
         if (!pwd.equals(user.getPassword())) {
             throw new BusinessException(ShiroError.USERNAME_OR_PASSWORD_ERROR);
         }
-        return ResponseEntity.success(JWTUtil.sign(userAccount));
+        return ResponseEntity.success(JWTUtil.sign(userAccount, user.getUserId()));
     }
 
 }

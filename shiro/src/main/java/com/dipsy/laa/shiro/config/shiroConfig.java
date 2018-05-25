@@ -36,7 +36,6 @@ public class shiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/api/auth/hash", "anon");
         filterChainDefinitionMap.put("/api/auth/login", "anon");
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
         filterChainDefinitionMap.put("/v2/api-docs", "anon");
