@@ -1,6 +1,6 @@
 package com.dipsy.laa;
 
-import com.dipsy.laa.im.ImServerStart;
+import com.dipsy.laa.im.transport.ImServerStart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

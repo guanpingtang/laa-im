@@ -1,4 +1,4 @@
-package com.dipsy.laa.im;
+package com.dipsy.laa.im.transport;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -11,6 +11,7 @@ import io.netty.handler.logging.LoggingHandler;
 
 /**
  * im服务启动
+ *
  * @author tgp
  */
 public class ImServerStart {
@@ -29,7 +30,7 @@ public class ImServerStart {
             .group(bossGroup, workGroup)
             .channel(NioServerSocketChannel.class)
             .handler(new LoggingHandler(LogLevel.INFO))
-            .childHandler(new ImserverChannelInitializer())
+            .childHandler(new ImServerChannelInitializer())
             .option(ChannelOption.SO_BACKLOG, 128)
             .childOption(ChannelOption.SO_KEEPALIVE, true);
 
