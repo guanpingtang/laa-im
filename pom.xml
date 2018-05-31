@@ -130,6 +130,16 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional> <!-- 方便开发，这个需要为 true 热部署才有效，如果不需要，改为false或删除整个依赖即可 -->
         </dependency>
+        <!--添加缓存支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-cache</artifactId>
+        </dependency>
+        <!--添加Redis缓存支持-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
