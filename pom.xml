@@ -133,7 +133,7 @@
         <!--添加缓存支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-cache</artifactId>
+            <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
         <!--添加Redis缓存支持-->
         <dependency>

@@ -17,6 +17,16 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.dipsy</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dipsy</groupId>
+            <artifactId>shiro</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <artifactId>im-service</artifactId>

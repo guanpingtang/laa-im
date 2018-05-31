@@ -18,10 +18,10 @@ import java.lang.reflect.Method;
 @EnableCaching  //开启缓存支持
 public class RedisConf extends CachingConfigurerSupport {
 
-    @Value("${redis.host}")
-    private String host;
-    @Value("${redis.port}")
-    private String port;
+//    @Value("${redis.host}")
+//    private String host;
+//    @Value("${redis.port}")
+//    private String port;
 
     /**
      * RedisCacheManager作为缓存管理
