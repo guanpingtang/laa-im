@@ -1,6 +1,7 @@
 package com.dipsy.laa.im.transport.client;
 
 import com.dipsy.laa.im.transport.protocol.MessageHolder;
+import com.dipsy.laa.im.transport.protocol.ProtocolHeader;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +14,17 @@ public class ClientSimpleHandle extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        log.info("客户端：链接服务器成功");
-        super.channelActive(ctx);
+        log.debug("客户端：链接服务器成功");
+        MessageHolder messageHolder = new MessageHolder();
+        messageHolder.setSign(ProtocolHeader.REQUEST);
+        messageHolder.setType(ProtocolHeader.PERSON_MESSAGE);
+        messageHolder.setBody("Hello Netty");
+        ctx.writeAndFlush(messageHolder);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("客户端：链接关闭");
+        log.debug("客户端：链接关闭");
         super.channelInactive(ctx);
     }
 

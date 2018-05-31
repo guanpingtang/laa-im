@@ -1,16 +1,14 @@
-package com.dipsy.laa.im.transport.client;
+package com.dipsy.laa.im.transport.handler;
 
-import com.dipsy.laa.im.transport.handler.ProtocolDecoderHandler;
-import com.dipsy.laa.im.transport.handler.ProtocolEncoderHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 
 /**
- * 入站处理链
+ * 处理链
  * @author tgp
  */
-public class ImClientChannelInitializer extends ChannelInitializer<SocketChannel> {
+public class ImServerChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
@@ -18,6 +16,8 @@ public class ImClientChannelInitializer extends ChannelInitializer<SocketChannel
         //在这里添加处理链 handel链
         channelPipeline.addLast(new ProtocolDecoderHandler());
         channelPipeline.addLast(new ProtocolEncoderHandler());
-        channelPipeline.addLast(new ClientSimpleHandle());
+        //channelPipeline.addLast(new IdleStateHandler(6, 0, 0));
+        //channelPipeline.addLast(new HeartbeatHandler());
+        channelPipeline.addLast(new AcceptorHandler());
     }
 }

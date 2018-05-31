@@ -1,5 +1,6 @@
 package com.dipsy.laa.im.transport;
 
+import com.dipsy.laa.im.transport.handler.ImServerChannelInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -8,12 +9,14 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * im服务启动
  *
  * @author tgp
  */
+@Slf4j
 public class ImServerStart {
 
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -35,6 +38,7 @@ public class ImServerStart {
             .childOption(ChannelOption.SO_KEEPALIVE, true);
 
         ChannelFuture future = bootstrap.bind(port).sync();
+        log.info("服务端启动成功,监听{}端口", port);
         future.channel().closeFuture().sync();
     }
 

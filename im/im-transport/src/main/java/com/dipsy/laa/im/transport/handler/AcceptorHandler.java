@@ -27,6 +27,7 @@ public class AcceptorHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof MessageHolder) {
             MessageHolder messageHolder = (MessageHolder) msg;
+            System.out.println("收到消息" + msg.toString());
             // 指定Channel
             messageHolder.setChannel(ctx.channel());
             // 添加到任务队列
