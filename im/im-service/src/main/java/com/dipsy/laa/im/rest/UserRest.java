@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/friend")
+@RequestMapping("/api/friend")
 @Api(description = "好友")
 public class UserRest {
 
