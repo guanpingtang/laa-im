@@ -1,6 +1,7 @@
 package com.dipsy.laa.config;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -8,24 +9,30 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 import java.lang.reflect.Method;
 
 
 @Configuration
-@EnableCaching //开启缓存支持
+@EnableCaching  //开启缓存支持
 public class RedisConf extends CachingConfigurerSupport {
 
+    @Value("${redis.host}")
+    private String host;
+    @Value("${redis.port}")
+    private String port;
+
     /**
-     * redisCacheManager作为缓存管理器
-     * @param redisTemplate
+     * RedisCacheManager作为缓存管理
+     * @param connectionFactory
      * @return
      */
     @Bean
-  public CacheManager cacheManager(RedisTemplate redisTemplate){
-        CacheManager cache = new RedisCacheManager(redisTemplate);
-        return cache;
+  public CacheManager cacheManager(RedisConnectionFactory connectionFactory){
+
+        RedisCacheManager redisCacheManager = RedisCacheManager.create(connectionFactory);
+        return redisCacheManager;
     }
 
     /**
