@@ -1,5 +1,6 @@
 package com.dipsy.laa;
 
+import com.dipsy.laa.im.dispacher.MessageSelector;
 import com.dipsy.laa.im.transport.ImServerStart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,8 +15,11 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        MessageSelector messageSelector = new MessageSelector();
+        messageSelector.start();
         imServerStart.start();
     }
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

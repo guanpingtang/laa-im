@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MessageDispacher {
 
-    public static void dispacher(MessageHolder messageHolder) {
+    public static void dispach(MessageHolder messageHolder) {
         if (messageHolder.getSign() != ProtocolHeader.REQUEST) {
             // 请求错误
             response(messageHolder.getChannel(), messageHolder.getSign());
