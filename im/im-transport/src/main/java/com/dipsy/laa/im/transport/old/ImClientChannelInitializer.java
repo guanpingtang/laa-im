@@ -1,7 +1,5 @@
-package com.dipsy.laa.im.transport.client;
+package com.dipsy.laa.im.transport.old;
 
-import com.dipsy.laa.im.transport.handler.ProtocolDecoderHandler;
-import com.dipsy.laa.im.transport.handler.ProtocolEncoderHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

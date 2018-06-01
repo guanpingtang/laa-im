@@ -1,7 +1,5 @@
-package com.dipsy.laa.im.transport.client;
+package com.dipsy.laa.im.transport.old;
 
-import com.dipsy.laa.im.transport.protocol.MessageHolder;
-import com.dipsy.laa.im.transport.protocol.ProtocolHeader;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;

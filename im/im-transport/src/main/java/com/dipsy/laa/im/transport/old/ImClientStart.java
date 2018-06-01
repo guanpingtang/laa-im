@@ -1,4 +1,4 @@
-package com.dipsy.laa.im.transport.client;
+package com.dipsy.laa.im.transport.old;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;

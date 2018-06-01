@@ -1,8 +1,7 @@
 package com.dipsy.laa.im.dispacher;
 
-import com.dipsy.laa.im.transport.protocol.MessageHolder;
-import com.dipsy.laa.im.transport.protocol.ProtocolHeader;
-import io.netty.channel.Channel;
+import com.dipsy.laa.im.event.EventEnum;
+import com.dipsy.laa.im.transport.packet.MessagePacket;
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,42 +12,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MessageDispacher {
 
-    public static void dispach(MessageHolder messageHolder) {
-        if (messageHolder.getSign() != ProtocolHeader.REQUEST) {
-            // 请求错误
-            response(messageHolder.getChannel(), messageHolder.getSign());
-        }
+    public static void dispach(MessagePacket messagePacket) {
 
-        switch (messageHolder.getType()) {
-            // 点对点消息
-            case ProtocolHeader.PERSON_MESSAGE:
-                //todo 服务器中转消息
-                break;
-            // 讨论组消息
-            case ProtocolHeader.GROUP_MESSAGE:
-                //todo 服务器中转消息
-                break;
+        int type = messagePacket.getType();
 
-            // 请求错误
-            default:
-                response(messageHolder.getChannel(), messageHolder.getSign());
-                break;
+        if (type == EventEnum.AUTH_REQ.getValue()) {
+            log.info("登录请求");
+        } else if (type == EventEnum.CHAT_REQ.getValue()) {
+            log.info("p2p请求");
+        } else if (type == EventEnum.GROUP_CHAT_REQ.getValue()) {
+            log.info("群聊请求");
         }
 
         // 释放buffer
-        ReferenceCountUtil.release(messageHolder);
-    }
-
-
-    /**
-     * 请求错误响应
-     */
-    private static void response(Channel channel, byte sign) {
-        MessageHolder messageHolder = new MessageHolder();
-        messageHolder.setSign(ProtocolHeader.RESPONSE);
-        messageHolder.setType(sign);
-        messageHolder.setStatus(ProtocolHeader.REQUEST_ERROR);
-        messageHolder.setBody("");
-        channel.writeAndFlush(messageHolder);
+        ReferenceCountUtil.release(messagePacket);
     }
 }

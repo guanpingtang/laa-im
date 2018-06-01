@@ -42,7 +42,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     }
 
     /**
-     * Processes unauthenticated requests. It handles the two-stage request/challenge authentication protocol.
+     * Processes unauthenticated requests. It handles the two-stage request/challenge authentication packet.
      *
      * @param request  incoming ServletRequest
      * @param response outgoing ServletResponse

@@ -6,13 +6,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * p2p
+ * 群聊消息
  */
 @Data
-public class P2PMessage implements Serializable {
+public class GroupMessage implements Serializable {
 
     private String from;
-    private String to;
     private MsgType msgType;
     private String content;
     private Date time;

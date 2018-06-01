@@ -1,7 +1,5 @@
-package com.dipsy.laa.im.transport.handler;
+package com.dipsy.laa.im.transport.old;
 
-import com.dipsy.laa.im.transport.protocol.MessageHolder;
-import com.dipsy.laa.im.transport.protocol.ProtocolHeader;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

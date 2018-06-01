@@ -1,76 +1,56 @@
 package com.dipsy.laa.im.transport.handler;
 
-import com.dipsy.laa.im.transport.protocol.MessageHolder;
-import com.dipsy.laa.im.transport.protocol.ProtocolHeader;
-import com.dipsy.laa.im.transport.queue.MessageQueue;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import com.dipsy.laa.im.transport.packet.MessagePacket;
+import com.dipsy.laa.im.transport.queue.MessageBlockQueue;
+import io.netty.channel.*;
+
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.BlockingQueue;
-
 
 /**
  * 接受处理
  */
 @Slf4j
-public class AcceptorHandler extends ChannelInboundHandlerAdapter {
+public class AcceptorHandler extends SimpleChannelInboundHandler<MessagePacket> {
 
-    private final BlockingQueue<MessageHolder> taskQueue;
+    private final BlockingQueue<MessagePacket> taskQueue;
 
     public AcceptorHandler() {
-        taskQueue = MessageQueue.getQueue();
-    }
-
-    //todo 信道激活时,可校验token
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
+        this.taskQueue = MessageBlockQueue.getQueue();
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        if (msg instanceof MessageHolder) {
-            MessageHolder messageHolder = (MessageHolder) msg;
-            log.info("收到消息:{}", msg.toString());
-            // 指定Channel
-            messageHolder.setChannel(ctx.channel());
-            // 添加到任务队列
-            boolean offer = taskQueue.offer(messageHolder);
-            if (!offer) {
-                // 服务器繁忙
-                log.warn("服务器繁忙，拒绝服务");
-                // 繁忙响应
-                response(ctx.channel(), messageHolder.getSign());
-            }
-        } else {
-            throw new IllegalArgumentException("msg is not instance of MessageHolder");
+    protected void channelRead0(ChannelHandlerContext ctx, MessagePacket messagePacket) throws Exception {
+        log.info("服务端接收到客户端消息:{}", messagePacket);
+        MessagePacket messagePacket1 = new MessagePacket();
+        messagePacket1.setVersion(MessagePacket.CUR_VERSION);
+        messagePacket1.setType(2);
+        String msg = "我收到了你的消息";
+        messagePacket1.setBody(msg.getBytes());
+        ctx.writeAndFlush(messagePacket1);
+        // 添加到任务队列
+        boolean offer = taskQueue.offer(messagePacket);
+        if (!offer) {
+            // 服务器繁忙
+            log.warn("服务器繁忙，拒绝服务");
+            // 繁忙响应
         }
     }
-
-
+    
     @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        super.channelReadComplete(ctx);
-    }
+	public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    	log.info("链路激活");
+	}
 
+	@Override
+	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+		log.info("服务端监听到客户端退出 ，进行业务处理");
+
+	}
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+        log.error("exceptionCaught", cause);
     }
-
-    /**
-     * 服务器繁忙响应
-     */
-    private void response(Channel channel, byte sign) {
-        MessageHolder messageHolder = new MessageHolder();
-        messageHolder.setSign(ProtocolHeader.RESPONSE);
-        messageHolder.setType(sign);
-        messageHolder.setStatus(ProtocolHeader.SERVER_BUSY);
-        messageHolder.setBody("");
-        channel.writeAndFlush(messageHolder);
-    }
-
 }

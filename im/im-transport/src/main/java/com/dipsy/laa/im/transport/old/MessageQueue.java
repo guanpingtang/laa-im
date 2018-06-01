@@ -1,6 +1,4 @@
-package com.dipsy.laa.im.transport.queue;
-
-import com.dipsy.laa.im.transport.protocol.MessageHolder;
+package com.dipsy.laa.im.transport.old;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
