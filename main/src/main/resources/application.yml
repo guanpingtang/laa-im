@@ -4,9 +4,9 @@ server:
 ##  数据源配置
 spring:
   datasource:
-    url: "jdbc:mysql://106.14.169.164:3306/laa"
+    url: "jdbc:mysql://111.231.64.142:3306/laa"
     username: "${NAME:root}"
-    password: "${PASSWORD:12345678}"
+    password: "${PASSWORD:xy520tgp}"
     driver-class-name: "com.mysql.jdbc.Driver"
 
 # IM端口

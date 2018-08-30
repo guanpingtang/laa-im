@@ -35,17 +35,18 @@ public class WebSocketProtocolCodecHandler extends MessageToMessageCodec<TextWeb
     @Override
     protected void decode(ChannelHandlerContext ctx, TextWebSocketFrame frame, List<Object> list) throws Exception {
         String text = frame.text();
-        JsonNode root = jsonMapper.readTree(text);
+//        JsonNode root = jsonMapper.readTree(text);
         MessagePacket protocolModel = new MessagePacket();
-        if (root.has("version")) {
-            protocolModel.setVersion(root.get("version").shortValue());
-        }
-        if (root.has("type")) {
-            protocolModel.setType(root.get("commandId").asInt());
-        }
-        if (root.has("body")) {
-            protocolModel.setBody(root.get("body").toString().getBytes());
-        }
+        protocolModel.setBody(text.getBytes());
+//        if (root.has("version")) {
+//            protocolModel.setVersion(root.get("version").shortValue());
+//        }
+//        if (root.has("type")) {
+//            protocolModel.setType(root.get("commandId").asInt());
+//        }
+//        if (root.has("body")) {
+//            protocolModel.setBody(root.get("body").toString().getBytes());
+//        }
         list.add(protocolModel);
     }
 }

@@ -4,16 +4,23 @@ import lombok.Data;
 
 /**
  * 数据包
+ * @author tgp
  */
 @Data
 public class MessagePacket {
 
     public static final short CUR_VERSION = 1;
 
-    // 数据包版本
+    /**
+     * 数据包版本
+     */
     private short version;
-    // 数据包操作类型 对应EventEnum类型
+    /**
+     * 数据包操作类型 对应EventEnum类型
+     */
     private int type;
-    // 数据包体
+    /**
+     * 数据包体
+     */
     private byte[] body;
 }

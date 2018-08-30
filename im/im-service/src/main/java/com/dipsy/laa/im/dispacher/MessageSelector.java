@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 消息轮询器
+ * @author tgp
  */
 @Slf4j
 public class MessageSelector {
