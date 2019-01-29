@@ -163,6 +163,12 @@ public class HappyTree {
             }
         } else if (0.6475 < rate && rate <= 0.6475 + 0.3525) {
             System.out.println("恭喜获得高级技能书*1");
+            if (map.keySet().contains("高级技能书*1")) {
+                int count = map.get("高级技能书*1") + 1;
+                map.put("高级技能书*1", count);
+            } else {
+                map.put("高级技能书*1", 1);
+            }
         }
     }
 }
