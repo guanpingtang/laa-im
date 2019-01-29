@@ -1,13 +1,19 @@
 server:
   port: "${SERVER_PORT:8080}"
 
-##  数据源配置
 spring:
+##  数据源配置
   datasource:
     url: "jdbc:mysql://111.231.64.142:3306/laa"
     username: "${NAME:root}"
     password: "${PASSWORD:xy520tgp}"
     driver-class-name: "com.mysql.jdbc.Driver"
+##  邮件配置
+  mail:
+    host: "smtp.qq.com"
+    port: 465
+    username: "1067418318@qq.com"
+    password: "kyamfeexmnarbejc"
 
 # IM端口
 laa:
