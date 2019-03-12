@@ -2,6 +2,8 @@ package com.dipsy.laa.im.transport.handler;
 
 import com.dipsy.laa.im.transport.packet.MessagePacket;
 import com.dipsy.laa.im.transport.queue.MessageBlockQueue;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.netty.channel.*;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,8 @@ public class AcceptorHandler extends SimpleChannelInboundHandler<MessagePacket> 
 
     private final BlockingQueue<MessagePacket> taskQueue;
 
+    private final ObjectMapper jsonMapper = new ObjectMapper();
+
     public AcceptorHandler() {
         this.taskQueue = MessageBlockQueue.getQueue();
     }
@@ -26,8 +30,10 @@ public class AcceptorHandler extends SimpleChannelInboundHandler<MessagePacket> 
         MessagePacket messagePacket1 = new MessagePacket();
         messagePacket1.setVersion(MessagePacket.CUR_VERSION);
         messagePacket1.setType(2);
-        String msg = "我收到了你的消息";
-        messagePacket1.setBody(msg.getBytes());
+        ObjectNode objectNode = jsonMapper.createObjectNode();
+        objectNode.put("msg","服务器收到了你的消息");
+        String messageJson = jsonMapper.writeValueAsString(objectNode);
+        messagePacket1.setBody(messageJson.getBytes());
         ctx.writeAndFlush(messagePacket1);
         // 添加到任务队列
         boolean offer = taskQueue.offer(messagePacket);

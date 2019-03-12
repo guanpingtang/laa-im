@@ -27,7 +27,7 @@ public class ImServerChannelInitializer extends ChannelInitializer<SocketChannel
         // netty自带websocket协议处理. websocket协议是建立在http协议基础之上的，开始会先通过http发送请求，
         // 请求头里会有Upgrade:websocket，表示将http升级为websocket.
         // 请求头里会有Upgrade:websocket，表示将http升级为websocket.
-        pipeline.addLast(new ImTokenHandler());
+        //pipeline.addLast(new ImTokenHandler());
         pipeline.addLast(new WebSocketServerProtocolHandler("", true));
         // 处理 TextWebSocketFrame
         pipeline.addLast(new WebSocketProtocolCodecHandler());

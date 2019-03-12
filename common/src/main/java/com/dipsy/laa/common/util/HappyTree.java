@@ -1,6 +1,7 @@
 package com.dipsy.laa.common.util;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 开心树抽奖程序
@@ -19,7 +20,7 @@ public class HappyTree {
      */
     private static Map<Integer, Double> CHANCE;
 
-    private static Map<String, Integer> map = new HashMap<>();
+    private AtomicInteger count = new AtomicInteger(0);
 
     /**
      * 设置奖池
@@ -56,31 +57,24 @@ public class HappyTree {
 
     public static void main(String[] args) {
         initJackpot();
-        int i = 0;
-//        label:
-        while (i < 10000) {
-            i = i + 1;
-            luckDraw();
-//            System.out.println("是否要挖密宝图：是（Y/y️）否（N/n）");
-//            Scanner input = new Scanner(System.in);
-//            if (input.hasNext()) {
-//                String answer = input.next();
-//                switch (answer.toUpperCase()) {
-//                    case "Y":
-//                        luckDraw();
-//                        break;
-//                    case "N":
-//                        System.out.println("抽奖结束");
-//                        break label;
-//                    default:
-//                        System.out.println("请输入Y/y或N/n");
-//                        break;
-//                }
-//            }
-        }
-        System.out.println("挖宝一万次，收益如下-----------------------");
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + "            共" + entry.getValue() + "个");
+        label:
+        while (true) {
+            System.out.println("是否要抽奖：是（Y/y️）否（N/n）");
+            Scanner input = new Scanner(System.in);
+            if (input.hasNext()) {
+                String answer = input.next();
+                switch (answer.toUpperCase()) {
+                    case "Y":
+                        luckDraw();
+                        break;
+                    case "N":
+                        System.out.println("抽奖结束");
+                        break label;
+                    default:
+                        System.out.println("请输入Y/y或N/n");
+                        break;
+                }
+            }
         }
     }
 
@@ -91,84 +85,35 @@ public class HappyTree {
         double rate = Math.random();
         if (0 < rate && rate <= 0.0010) {
             System.out.println("恭喜获得梦游先生坐骑碎片*1");
-            if (map.keySet().contains("梦游先生坐骑碎片*1")) {
-                int count = map.get("梦游先生坐骑碎片*1") + 1;
-                map.put("梦游先生坐骑碎片*1", count);
-            } else {
-                map.put("梦游先生坐骑碎片*1", 1);
-            }
         } else if (0.0010 < rate && rate <= 0.0010 + 0.0012) {
             System.out.println("恭喜获得红色头饰*1");
-            if (map.keySet().contains("红色头饰*1")) {
-                int count = map.get("红色头饰*1") + 1;
-                map.put("红色头饰*1", count);
-            } else {
-                map.put("红色头饰*1", 1);
-            }
         } else if (0.0022 < rate && rate <= 0.0022 + 0.0100) {
             System.out.println("恭喜获得金色头饰*1");
-            if (map.keySet().contains("金色头饰*1")) {
-                int count = map.get("金色头饰*1") + 1;
-                map.put("金色头饰*1", count);
-            } else {
-                map.put("金色头饰*1", 1);
-            }
         } else if (0.0122 < rate && rate <= 0.0122 + 0.0283) {
             System.out.println("恭喜获得稻荷灵魂碎片*1");
-            if (map.keySet().contains("稻荷灵魂碎片*1")) {
-                int count = map.get("稻荷灵魂碎片*1") + 1;
-                map.put("稻荷灵魂碎片*1", count);
-            } else {
-                map.put("稻荷灵魂碎片*1", 1);
-            }
         } else if (0.0405 < rate && rate <= 0.0405 + 0.0283) {
             System.out.println("恭喜获得优妮灵魂碎片*1");
-            if (map.keySet().contains("优妮灵魂碎片*1")) {
-                int count = map.get("优妮灵魂碎片*1") + 1;
-                map.put("优妮灵魂碎片*1", count);
-            } else {
-                map.put("优妮灵魂碎片*1", 1);
-            }
         } else if (0.0688 < rate && rate <= 0.0688 + 0.0283) {
             System.out.println("恭喜获得戴斯特灵魂碎片*1");
-            if (map.keySet().contains("戴斯特灵魂碎片*1")) {
-                int count = map.get("戴斯特灵魂碎片*1") + 1;
-                map.put("戴斯特灵魂碎片*1", count);
-            } else {
-                map.put("戴斯特灵魂碎片*1", 1);
-            }
         } else if (0.0971 < rate && rate <= 0.0971 + 0.1501) {
             System.out.println("恭喜获得忘忧果*10");
-            if (map.keySet().contains("忘忧果*10")) {
-                int count = map.get("忘忧果*10") + 1;
-                map.put("忘忧果*10", count);
-            } else {
-                map.put("忘忧果*10", 1);
-            }
         } else if (0.2472 < rate && rate <= 0.2472 + 0.1501) {
             System.out.println("恭喜获得紫色头饰*1");
-            if (map.keySet().contains("紫色头饰*1")) {
-                int count = map.get("紫色头饰*1") + 1;
-                map.put("紫色头饰*1", count);
-            } else {
-                map.put("紫色头饰*1", 1);
-            }
         } else if (0.3973 < rate && rate <= 0.3973 + 0.2502) {
             System.out.println("恭喜获得捕蛋网*3");
-            if (map.keySet().contains("捕蛋网*3")) {
-                int count = map.get("捕蛋网*3") + 1;
-                map.put("捕蛋网*3", count);
-            } else {
-                map.put("捕蛋网*3", 1);
-            }
         } else if (0.6475 < rate && rate <= 0.6475 + 0.3525) {
             System.out.println("恭喜获得高级技能书*1");
-            if (map.keySet().contains("高级技能书*1")) {
-                int count = map.get("高级技能书*1") + 1;
-                map.put("高级技能书*1", count);
-            } else {
-                map.put("高级技能书*1", 1);
+        }
+    }
+
+    public int next() {
+        while (true) {
+            int i = count.get();
+            int next = i + 1;
+            if (count.compareAndSet(i, next)) {
+                return next;
             }
         }
     }
+
 }
