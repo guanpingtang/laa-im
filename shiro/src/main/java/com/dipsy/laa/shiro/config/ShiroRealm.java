@@ -1,6 +1,6 @@
 package com.dipsy.laa.shiro.config;
 
-import com.dipsy.laa.dao.model.UserInfo;
+import com.dipsy.laa.shiro.model.UserInfo;
 import com.dipsy.laa.shiro.model.JWTToken;
 import com.dipsy.laa.shiro.service.UserService;
 import com.dipsy.laa.common.util.JWTUtil;

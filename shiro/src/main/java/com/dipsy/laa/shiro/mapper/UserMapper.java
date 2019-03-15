@@ -1,7 +1,7 @@
-package com.dipsy.laa.dao.mapper;
+package com.dipsy.laa.shiro.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.dipsy.laa.dao.model.UserInfo;
+import com.dipsy.laa.shiro.model.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

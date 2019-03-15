@@ -1,4 +1,4 @@
-package com.dipsy.laa.dao.model;
+package com.dipsy.laa.shiro.model;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
