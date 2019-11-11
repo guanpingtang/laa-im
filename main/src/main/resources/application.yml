@@ -4,10 +4,10 @@ server:
 spring:
 ##  数据源配置
   datasource:
-    url: "jdbc:mysql://111.231.64.142:3306/laa"
-    username: "${NAME:root}"
-    password: "${PASSWORD:xy520tgp}"
-    driver-class-name: "com.mysql.jdbc.Driver"
+    url: "jdbc:postgresql://122.51.45.249:5432/laa" #k8s env
+    username: "${NAME:postgres}"
+    password: "${PASSWORD:h3c.com!}"
+    driverClassName: "org.postgresql.Driver"
 ##  邮件配置
   mail:
     host: "smtp.qq.com"
