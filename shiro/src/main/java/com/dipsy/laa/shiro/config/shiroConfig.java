@@ -37,6 +37,7 @@ public class shiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/api/auth/login", "anon");
+        filterChainDefinitionMap.put("/api/auth/hash", "anon");
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
         filterChainDefinitionMap.put("/v2/api-docs", "anon");
         filterChainDefinitionMap.put("/swagger-resources/**", "anon");
@@ -49,17 +50,17 @@ public class shiroConfig {
         return shiroFilterFactoryBean;
     }
 
-//    /**
-//     * 密码加密
-//     * @return HashedCredentialsMatcher
-//     */
-//    @Bean
-//    public HashedCredentialsMatcher hashedCredentialsMatcher() {
-//        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-//        hashedCredentialsMatcher.setHashAlgorithmName("md5"); // 散列算法，这里是用md5算法
-//        hashedCredentialsMatcher.setHashIterations(2); //散列2次
-//        return hashedCredentialsMatcher;
-//    }
+    /**
+     * 密码加密
+     * @return HashedCredentialsMatcher
+     */
+    @Bean
+    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        hashedCredentialsMatcher.setHashAlgorithmName("md5"); // 散列算法，这里是用md5算法
+        hashedCredentialsMatcher.setHashIterations(2); //散列2次
+        return hashedCredentialsMatcher;
+    }
 
     /**
      * webSecurityManager是shiro的大管家
@@ -90,7 +91,7 @@ public class shiroConfig {
     @Bean
     public ShiroRealm shiroRealm() {
         ShiroRealm shiroRealm = new ShiroRealm();
-//      shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return shiroRealm;
     }
 
