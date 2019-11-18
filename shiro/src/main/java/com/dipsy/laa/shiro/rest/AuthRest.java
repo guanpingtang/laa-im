@@ -29,8 +29,6 @@ public class AuthRest {
     @ApiOperation(value = "密码加密example")
     public ResponseEntity hash(
         @RequestParam("password") String password) {
-        String userId = AuthUtils.getCurrUserId();
-        System.out.println(userId);
         String hashPassword = new SimpleHash("MD5", password, ByteSource.Util.bytes(password),
             2).toHex();
         return ResponseEntity.success(hashPassword);
