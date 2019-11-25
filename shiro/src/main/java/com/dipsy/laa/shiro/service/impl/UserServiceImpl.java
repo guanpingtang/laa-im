@@ -3,7 +3,6 @@ package com.dipsy.laa.shiro.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.dipsy.laa.common.Annotation.Rule;
 import com.dipsy.laa.shiro.mapper.UserMapper;
 import com.dipsy.laa.shiro.model.UserInfo;
 import com.dipsy.laa.shiro.service.UserService;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@Rule
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserInfo> implements UserService {
 
     @Override

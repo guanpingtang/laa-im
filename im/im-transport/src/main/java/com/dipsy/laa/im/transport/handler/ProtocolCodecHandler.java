@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  *
  * @author tgp
  */
-public class WebSocketProtocolCodecHandler extends MessageToMessageCodec<TextWebSocketFrame, MessagePacket> {
+public class ProtocolCodecHandler extends MessageToMessageCodec<TextWebSocketFrame, MessagePacket> {
 
     private final ObjectMapper jsonMapper = new ObjectMapper();
 

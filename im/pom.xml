@@ -16,4 +16,17 @@
 
     <artifactId>im</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.dipsy</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dipsy</groupId>
+            <artifactId>shiro</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
