@@ -34,7 +34,7 @@
         <swagger.version>2.7.0</swagger.version>
         <apach.commons.version>3.7</apach.commons.version>
         <mybatis.version>3.4.6</mybatis.version>
-        <shiro.version>1.4.0</shiro.version>
+        <shiro.version>1.7.0</shiro.version>
         <mybatisplus.springboot.starter.version>1.0.5</mybatisplus.springboot.starter.version>
         <mybatis.plus.version>2.1.9</mybatis.plus.version>
         <alibaba.druid.version>1.1.9</alibaba.druid.version>
