@@ -38,7 +38,7 @@
         <mybatisplus.springboot.starter.version>1.0.5</mybatisplus.springboot.starter.version>
         <mybatis.plus.version>2.1.9</mybatis.plus.version>
         <alibaba.druid.version>1.1.9</alibaba.druid.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <lombok.version>1.16.20</lombok.version>
         <netty.version>4.1.22.Final</netty.version>
         <freemarker.version>2.3.20</freemarker.version>
